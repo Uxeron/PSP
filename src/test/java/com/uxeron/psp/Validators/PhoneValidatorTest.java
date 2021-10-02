@@ -9,7 +9,7 @@ public class PhoneValidatorTest {
         final String invalidNumber = "_862645123";
         final ValidationError expectedError = new ValidationError("HasNonNumeric");
 
-        Assert.assertTrue(PasswordChecker
+        Assert.assertTrue(PhoneValidator
             .validate(invalidNumber)
             .contains(expectedError));
     }
@@ -19,7 +19,7 @@ public class PhoneValidatorTest {
         final String validNumber = "862645123";
         final ValidationError expectedError = new ValidationError("HasNonNumeric");
 
-        Assert.assertFalse(PasswordChecker
+        Assert.assertFalse(PhoneValidator
             .validate(validNumber)
             .contains(expectedError));
     }
@@ -29,7 +29,7 @@ public class PhoneValidatorTest {
         final String invalidNumber = "8626451";
         final ValidationError expectedError = new ValidationError("InvalidLength");
 
-        Assert.assertTrue(PasswordChecker
+        Assert.assertTrue(PhoneValidator
             .validate(invalidNumber)
             .contains(expectedError));
     }
@@ -39,7 +39,7 @@ public class PhoneValidatorTest {
         final String invalidNumber = "86264512345";
         final ValidationError expectedError = new ValidationError("InvalidLength");
 
-        Assert.assertTrue(PasswordChecker
+        Assert.assertTrue(PhoneValidator
             .validate(invalidNumber)
             .contains(expectedError));
     }
@@ -49,7 +49,7 @@ public class PhoneValidatorTest {
         final String validNumber = "862645123";
         final ValidationError expectedError = new ValidationError("InvalidLength");
 
-        Assert.assertFalse(PasswordChecker
+        Assert.assertFalse(PhoneValidator
             .validate(validNumber)
             .contains(expectedError));
     }

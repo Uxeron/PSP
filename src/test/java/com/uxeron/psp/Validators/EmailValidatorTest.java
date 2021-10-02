@@ -9,7 +9,7 @@ public class EmailValidatorTest {
         final String emailWithoutEt = "userdomain.net";
         final ValidationError expectedError = new ValidationError("MissingAt");
 
-        Assert.assertTrue(PasswordChecker
+        Assert.assertTrue(EmailValidator
             .validate(emailWithoutEt)
             .contains(expectedError));
     }
@@ -19,7 +19,7 @@ public class EmailValidatorTest {
         final String emailWithEt = "user@domain.net";
         final ValidationError expectedError = new ValidationError("MissingAt");
 
-        Assert.assertFalse(PasswordChecker
+        Assert.assertFalse(EmailValidator
             .validate(emailWithEt)
             .contains(expectedError));
     }
@@ -29,7 +29,7 @@ public class EmailValidatorTest {
         final String invalidEmail = "user@@domain.net";
         final ValidationError expectedError = new ValidationError("InvalidSymbols");
 
-        Assert.assertTrue(PasswordChecker
+        Assert.assertTrue(EmailValidator
             .validate(invalidEmail)
             .contains(expectedError));
     }
@@ -39,7 +39,7 @@ public class EmailValidatorTest {
         final String invalidEmail = "user @domain.net";
         final ValidationError expectedError = new ValidationError("InvalidSymbols");
 
-        Assert.assertTrue(PasswordChecker
+        Assert.assertTrue(EmailValidator
             .validate(invalidEmail)
             .contains(expectedError));
     }
@@ -49,7 +49,7 @@ public class EmailValidatorTest {
         final String validEmail = "user@domain.net";
         final ValidationError expectedError = new ValidationError("InvalidSymbols");
 
-        Assert.assertFalse(PasswordChecker
+        Assert.assertFalse(EmailValidator
             .validate(validEmail)
             .contains(expectedError));
     }
@@ -59,7 +59,7 @@ public class EmailValidatorTest {
         final String invalidEmail = "user@domainnet";
         final ValidationError expectedError = new ValidationError("InvalidDomain");
 
-        Assert.assertTrue(PasswordChecker
+        Assert.assertTrue(EmailValidator
             .validate(invalidEmail)
             .contains(expectedError));
     }
@@ -69,7 +69,7 @@ public class EmailValidatorTest {
         final String validEmail = "user@domain.net";
         final ValidationError expectedError = new ValidationError("InvalidDomain");
 
-        Assert.assertFalse(PasswordChecker
+        Assert.assertFalse(EmailValidator
             .validate(validEmail)
             .contains(expectedError));
     }
